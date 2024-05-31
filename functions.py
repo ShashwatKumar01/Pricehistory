@@ -18,7 +18,7 @@ import re
 import aiohttp
 
 from unshortenit import UnshortenIt
-from selenium.webdriver.common.by import By
+# from selenium.webdriver.common.by import By
 from unshortenit import UnshortenIt
 # from selenium.webdriver.common.action_chains import ActionChains
 # from selenium.webdriver.support.ui import WebDriverWait
