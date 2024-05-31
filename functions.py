@@ -186,7 +186,7 @@ async def get_product_details(url):
     if SearchProduct.offers:
         price_element=str(SearchProduct.offers.listings[0].price.display_amount)
     else:
-        price_element='ERROR'
+        price_element=' '
     return amazon_product_name, img_url, price_element
 
 async def merge_images(image_urls):
