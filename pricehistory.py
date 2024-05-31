@@ -36,7 +36,7 @@ async def is_subscribed(bot, query):
         if user.status != 'kicked':
             return True
 
-@app.on_message(filters.command("start") & (filters.group | filters.private))
+@app.on_message(filters.command("start") & (filters.group | filters.private) & filters.incoming)
 async def start(app, message):
     await app.send_message(message.chat.id,"Hey! Just send me a valid Amazon product link. I will share you the Price History Graph of last 3 months😍😍\n\nBuy when the Price is Low📉")
     # Check if the message is in a group
@@ -68,7 +68,7 @@ def callback_query(app,CallbackQuery):
         CallbackQuery.edit_message_text('Forward to Channel Status turned On',reply_markup=forward_off)
         forward = True
 
-@app.on_message(filters.private | filters.group)
+@app.on_message((filters.private & filters.incoming) | (filters.group & filters.incoming))
 async def handle_text(app, message):
 
     # [InlineKeyboardButton("Join Channel", url="https://t.me/Deals_and_Discounts_Channel/37444")]
