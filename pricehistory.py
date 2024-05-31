@@ -163,32 +163,32 @@ async def handle_text(app, message):
             return None
 
         # ##################################
-        if 'fkrt' in extracted_link or 'flipkart' in extracted_link:
-            if str(message.chat.id) in DealerID and forward==True:
-                if 'fkrt.co' in inputvalue:
-                    inputvalue = extp(inputvalue)
-                affText= await ekconvert(inputvalue)
-                combined_image= await graphprocess(extracted_link)
-                image_bytes = BytesIO()
-                combined_image.save(image_bytes, format='JPEG')
-                image_bytes.seek(0)
+        # if 'fkrt' in extracted_link or 'flipkart' in extracted_link:
+        #     if str(message.chat.id) in DealerID and forward==True:
+        #         if 'fkrt.co' in inputvalue:
+        #             inputvalue = extp(inputvalue)
+        #         affText= await ekconvert(inputvalue)
+        #         combined_image= await graphprocess(extracted_link)
+        #         image_bytes = BytesIO()
+        #         combined_image.save(image_bytes, format='JPEG')
+        #         image_bytes.seek(0)
 
-                # await app.send_photo(message.chat.id, photo=image_bytes, caption=inputvalue.replace(extracted_link,
-                #                                                                                     affiliateUrl) if affiliateUrl else inputvalue,
-                #                     reply_markup=Promo)
-                await app.send_photo(message.chat.id, photo=image_bytes, caption= affText,
-                                     reply_markup=Promo)
-                if str(message.chat.id) in DealerID:
-                    await app.send_photo(chat_id=Target_Channel_id, photo=image_bytes,
-                                         caption=f'{affText}</b>',
-                                         reply_markup=Promo)
-            else:
-                e=await app.send_message(message.chat.id,"Flipkart Price History can be used only by my Admin🥺")
-                await asyncio.sleep(5)
-                await e.delete()
-                await a.delete()
-                await message.delete()
-                return None
+        #         # await app.send_photo(message.chat.id, photo=image_bytes, caption=inputvalue.replace(extracted_link,
+        #         #                                                                                     affiliateUrl) if affiliateUrl else inputvalue,
+        #         #                     reply_markup=Promo)
+        #         await app.send_photo(message.chat.id, photo=image_bytes, caption= affText,
+        #                              reply_markup=Promo)
+        #         if str(message.chat.id) in DealerID:
+        #             await app.send_photo(chat_id=Target_Channel_id, photo=image_bytes,
+        #                                  caption=f'{affText}</b>',
+        #                                  reply_markup=Promo)
+        #     else:
+        #         e=await app.send_message(message.chat.id,"Flipkart Price History can be used only by my Admin🥺")
+        #         await asyncio.sleep(5)
+        #         await e.delete()
+        #         await a.delete()
+        #         await message.delete()
+        #         return None
 
         # $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
