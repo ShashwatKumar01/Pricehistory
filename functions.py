@@ -176,7 +176,7 @@ def keepa_process(url):
 #             await asyncio.sleep(1)  # Wait before retrying
 
 #     return None
-# async def get_product_details(url):
+async def get_product_details(url):
 
     asin=get_asin(url)
     # print(asin)
