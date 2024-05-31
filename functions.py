@@ -20,15 +20,15 @@ import aiohttp
 from unshortenit import UnshortenIt
 from selenium.webdriver.common.by import By
 from unshortenit import UnshortenIt
-from selenium.webdriver.common.action_chains import ActionChains
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.chrome.options import Options
+# from selenium.webdriver.common.action_chains import ActionChains
+# from selenium.webdriver.support.ui import WebDriverWait
+# from selenium.webdriver.support import expected_conditions as EC
+# from selenium.webdriver.chrome.options import Options
 
 from pyrogram import Client, filters, enums
-from selenium.webdriver.chrome.service import Service
-from webdriver_manager.chrome import ChromeDriverManager
-from selenium import webdriver
+# from selenium.webdriver.chrome.service import Service
+# from webdriver_manager.chrome import ChromeDriverManager
+# from selenium import webdriver
 user_data_dir = "C:\\Users\\shash\\AppData\\Local\\Google\\Chrome\\User Data\\Profile 6"
 
 # chrome_options = webdriver.ChromeOptions()
@@ -125,69 +125,69 @@ def keepa_process(url):
 
     return keepa_url,amazon_url,affiliate_url
 
-async def get_product_details(url):
-    headers = {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3'
-    }
-
-    async with aiohttp.ClientSession() as session:
-        retries = 1
-        for i in range(40):
-            # print(i)
-            if 'amazon' not in url:
-                return None
-
-            async with session.get(url, headers=headers) as response:
-                if response.status == 200:
-                    html = await response.text()
-                    soup = BeautifulSoup(html, 'html.parser')
-                    product_title = soup.find('span', {'id': 'productTitle'})
-                    product_image = soup.find('img', {'id': 'landingImage'})
-                    price_element = soup.find('span', {'class': 'a-offscreen'})
-                    unavailable_element = soup.find(lambda tag: tag.name == 'span' and
-                                                     tag.get('class') == ['a-size-medium a-color-success'] and
-                                                     tag.text.strip() == 'Currently unavailable.')
-
-                    if product_image:
-                        img_url = product_image.get('src')
-
-                    if product_title:
-                        amazon_product_name = product_title.text.strip()
-
-                        if unavailable_element:
-                            price_element = 'Out Of Stock'
-                        elif price_element:
-                            price_element = price_element.text.strip()
-                        else:
-                            price_element = 'Unable to get Price'
-                        # print(amazon_product_name,img_url,price_element)
-                        return amazon_product_name, img_url, price_element
-
-                elif response.status == 503:
-                    if i==30:
-                        print("503 Error: Server busy, retrying...")
-                        break
-
-                elif response.status == 404:
-                    if i==30    :
-                        print("Error 404:", response.status)
-                        break
-
-            await asyncio.sleep(1)  # Wait before retrying
-
-    return None
 # async def get_product_details(url):
-#
-#     asin=get_asin(url)
-#     # print(asin)
-#     SearchProduct=amazon.get_items(asin)[0]
-#     amazon_product_name= SearchProduct.item_info.title.display_value
-#     img_url=SearchProduct.images.primary.large.url
-#     if SearchProduct.offers.listings[0].price.amount:
-#         price_element=str(SearchProduct.offers.listings[0].price.display_amount)
-#     else:
-#         price_element='Currently Unavailable'
-#     return amazon_product_name, img_url, price_element
+#     headers = {
+#         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3'
+#     }
+
+#     async with aiohttp.ClientSession() as session:
+#         retries = 1
+#         for i in range(40):
+#             # print(i)
+#             if 'amazon' not in url:
+#                 return None
+
+#             async with session.get(url, headers=headers) as response:
+#                 if response.status == 200:
+#                     html = await response.text()
+#                     soup = BeautifulSoup(html, 'html.parser')
+#                     product_title = soup.find('span', {'id': 'productTitle'})
+#                     product_image = soup.find('img', {'id': 'landingImage'})
+#                     price_element = soup.find('span', {'class': 'a-offscreen'})
+#                     unavailable_element = soup.find(lambda tag: tag.name == 'span' and
+#                                                      tag.get('class') == ['a-size-medium a-color-success'] and
+#                                                      tag.text.strip() == 'Currently unavailable.')
+
+#                     if product_image:
+#                         img_url = product_image.get('src')
+
+#                     if product_title:
+#                         amazon_product_name = product_title.text.strip()
+
+#                         if unavailable_element:
+#                             price_element = 'Out Of Stock'
+#                         elif price_element:
+#                             price_element = price_element.text.strip()
+#                         else:
+#                             price_element = 'Unable to get Price'
+#                         # print(amazon_product_name,img_url,price_element)
+#                         return amazon_product_name, img_url, price_element
+
+#                 elif response.status == 503:
+#                     if i==30:
+#                         print("503 Error: Server busy, retrying...")
+#                         break
+
+#                 elif response.status == 404:
+#                     if i==30    :
+#                         print("Error 404:", response.status)
+#                         break
+
+#             await asyncio.sleep(1)  # Wait before retrying
+
+#     return None
+# async def get_product_details(url):
+
+    asin=get_asin(url)
+    # print(asin)
+    SearchProduct=amazon.get_items(asin)[0]
+    amazon_product_name= SearchProduct.item_info.title.display_value
+    img_url=SearchProduct.images.primary.large.url
+    if SearchProduct.offers.listings[0].price.amount:
+        price_element=str(SearchProduct.offers.listings[0].price.display_amount)
+    else:
+        price_element='Currently Unavailable'
+    return amazon_product_name, img_url, price_element
 
 async def merge_images(image_urls):
     images = []
