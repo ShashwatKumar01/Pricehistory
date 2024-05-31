@@ -31,13 +31,13 @@ from webdriver_manager.chrome import ChromeDriverManager
 from selenium import webdriver
 user_data_dir = "C:\\Users\\shash\\AppData\\Local\\Google\\Chrome\\User Data\\Profile 6"
 
-chrome_options = webdriver.ChromeOptions()
-chrome_options.add_argument(f"--user-data-dir={user_data_dir}")
-# chrome_options.add_argument("--headless")
-# chrome_options.add_argument("--disable-dev-shm-usage")
-# chrome_options.add_argument("--no-sandbox")
-driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()),options=chrome_options)
-driver.maximize_window()
+# chrome_options = webdriver.ChromeOptions()
+# chrome_options.add_argument(f"--user-data-dir={user_data_dir}")
+# # chrome_options.add_argument("--headless")
+# # chrome_options.add_argument("--disable-dev-shm-usage")
+# # chrome_options.add_argument("--no-sandbox")
+# driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()),options=chrome_options)
+# driver.maximize_window()
 KEY='AKIAIB5643SVT3UOEEOQ'
 SECRET='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'
 TAG='pgraph-21'
