@@ -183,10 +183,10 @@ async def get_product_details(url):
     SearchProduct=amazon.get_items(asin)[0]
     amazon_product_name= SearchProduct.item_info.title.display_value
     img_url=SearchProduct.images.primary.large.url
-    if SearchProduct.offers.listings[0].price.amount:
+    if SearchProduct.offers:
         price_element=str(SearchProduct.offers.listings[0].price.display_amount)
     else:
-        price_element='Currently Unavailable'
+        price_element='ERROR'
     return amazon_product_name, img_url, price_element
 
 async def merge_images(image_urls):
