@@ -209,7 +209,7 @@ async def handle_text(app, message):
             combined_image.save(image_bytes, format='JPEG')
             image_bytes.seek(0)
 
-            await app.send_photo(message.chat.id, photo=image_bytes, caption=f"Product: {product_name}\n\nCurrent Price: <b>{Price}</b>\n\nAMAZON LINK: <b>{affiliate_url}</b>\n\nfrom @Price_History_Loots ",reply_markup=Promo)
+            await app.send_photo(message.chat.id, photo=image_bytes, caption=f"Product: {product_name}\n\nCurrent Price: <b>{Price}</b>\n\nAMAZON LINK: <b>{affiliate_url}\n\nHumble Request to Support this Bot by Buying the Product from above Link!It will help the Bot to be Online 24*7😊</b>\n\nfrom @Price_History_Loots ",reply_markup=Promo)
             # print(message.chat.id)
             if str(message.chat.id) in  DealerID:
                 # print(forward)
