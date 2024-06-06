@@ -67,10 +67,10 @@ async def forwardtochannel(app,message):
 async def callback_query(app,CallbackQuery):
     global forward
     if CallbackQuery.data=='forward off':
-        CallbackQuery.edit_message_text('Forward to Channel Status turned Off',reply_markup=forward_on)
+        await CallbackQuery.edit_message_text('Forward to Channel Status turned Off',reply_markup=forward_on)
         forward = False
     elif CallbackQuery.data=='forward on':
-        CallbackQuery.edit_message_text('Forward to Channel Status turned On',reply_markup=forward_off)
+        await CallbackQuery.edit_message_text('Forward to Channel Status turned On',reply_markup=forward_off)
         forward = True
     elif CallbackQuery.data=='Send':
         a=CallbackQuery.message
