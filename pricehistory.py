@@ -3,7 +3,7 @@ from pyrogram.errors import InputUserDeactivated, UserNotParticipant, FloodWait,
 import logging
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from pyrogram import errors
-
+import tempfile
 from quart import Quart
 from functions import *
 api_id= '23194318'
@@ -74,7 +74,11 @@ async def callback_query(app,CallbackQuery):
         forward = True
     elif CallbackQuery.data=='Send':
         a=CallbackQuery.message
-        await app.send_photo(chat_id=Target_Channel_id,caption=a.caption,photo=a.photo,reply_markup=Promo)
+        with tempfile.NamedTemporaryFile(delete=False) as temp_file:
+            await a.download(file_name=temp_file.name)
+            with open(temp_file.name, 'rb') as f:
+                photo_bytes = BytesIO(f.read())
+        await app.send_photo(chat_id=Target_Channel_id,caption=a.caption,photo=photo_bytes,reply_markup=Promo)
                              # photo=image_bytes,caption=f"<b>{inputvalue.replace(extracted_link, affiliate_url)}</b>",
                              # reply_markup=Promo)
         await CallbackQuery.answer(text='Sent to Channel✨', show_alert=True)
