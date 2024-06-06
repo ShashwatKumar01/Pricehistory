@@ -73,12 +73,11 @@ async def callback_query(app,CallbackQuery):
         CallbackQuery.edit_message_text('Forward to Channel Status turned On',reply_markup=forward_off)
         forward = True
     elif CallbackQuery.data=='Send':
-    # # CallbackQuery.
-    a=CallbackQuery.message
-    await app.send_photo(chat_id=Target_Channel_id,caption=a.caption,photo=a.photo,reply_markup=Promo)
-                         # photo=image_bytes,caption=f"<b>{inputvalue.replace(extracted_link, affiliate_url)}</b>",
-                         # reply_markup=Promo)
-    await CallbackQuery.answer(text='Sent to Channel✨', show_alert=True)
+        a=CallbackQuery.message
+        await app.send_photo(chat_id=Target_Channel_id,caption=a.caption,photo=a.photo,reply_markup=Promo)
+                             # photo=image_bytes,caption=f"<b>{inputvalue.replace(extracted_link, affiliate_url)}</b>",
+                             # reply_markup=Promo)
+        await CallbackQuery.answer(text='Sent to Channel✨', show_alert=True)
 
 @app.on_message((filters.private & filters.incoming) | (filters.group & filters.incoming))
 async def handle_text(app, message):
