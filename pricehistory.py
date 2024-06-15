@@ -38,7 +38,7 @@ async def is_subscribed(bot, query):
 
 @app.on_message(filters.command("start") & (filters.group | filters.private) & filters.incoming)
 async def start(app, message):
-    await app.send_message(message.chat.id,"Hey! Just send me a valid Amazon product link. I will share you the Price History Graph of last 3 months😍😍\n\nBuy when the Price is Low📉")
+    await app.send_message(message.chat.id,"<b>Hey! Just send me a valid Amazon product link. I will share you the Price History Graph of last 3 months😍😍\n\nBuy when the Price is Low📉</b>")
     # Check if the message is in a group
 
     # if message.chat.type== enums.ChatType.PRIVATE:
@@ -46,9 +46,9 @@ async def start(app, message):
     #         "Hey! Just send me a valid Amazon product link. I will share you the Price History Graph of last 3 months😍😍\n\nBuy when the Price is Low📉")
 
 Promo = InlineKeyboardMarkup(
-     [[InlineKeyboardButton("🔴 Join Main Channel (TRUE DEALS)", url="https://t.me/+HeHY-qoy3vsxYWU1")],
+     [[InlineKeyboardButton("PriceHistory Bot 🤖", url="https://t.me/Amazon_Pricehistory_Bot")],
       [InlineKeyboardButton("MAXIMUM DEALS 🛒", url="https://t.me/addlist/FReIeSd3Hyg5NjJl")],
-      [InlineKeyboardButton("Use PriceHistory Bot Here 🤖", url="https://t.me/Amazon_Pricehistory_Bot")]])
+      [InlineKeyboardButton("🔔 Main Channel ", url="https://t.me/+HeHY-qoy3vsxYWU1"),InlineKeyboardButton("Whatsapp Loots 💬", url="https://chat.whatsapp.com/JAU8ose1NUD7YjRubJi59b"]])
 
 forward_off = InlineKeyboardMarkup(
     [[InlineKeyboardButton("Turn Off", callback_data='forward off')]])
