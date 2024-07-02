@@ -3,6 +3,8 @@ from pyrogram.errors import InputUserDeactivated, UserNotParticipant, FloodWait,
 import logging
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from pyrogram import errors
+from pyrogram.enums import ChatAction
+
 import tempfile
 from quart import Quart
 from functions import *
@@ -38,7 +40,35 @@ async def is_subscribed(bot, query):
 
 @app.on_message(filters.command("start") & (filters.group | filters.private) & filters.incoming)
 async def start(app, message):
-    await app.send_message(message.chat.id,"<b>Hey! Just send me a valid Amazon product link. I will share you the Price History Graph of last 3 months😍😍\n\nBuy when the Price is Low📉</b>")
+    bot_info = await app.get_me()
+    bot_username = bot_info.username
+    if len(message.command) > 1:
+        product_id = message.command[1]
+        # print(product_id)
+        await app.send_chat_action(message.chat.id , ChatAction.UPLOAD_PHOTO)
+
+        url=f'https://www.amazon.in/dp/{product_id}'
+        product_name, imageUrl, Price = await get_product_details(url)
+
+        keepa_url, amazon_url, affiliate_url = keepa_process(url)
+
+        seed = message.from_user.id
+        combined_image = await merge_images([imageUrl, keepa_url])
+        image_bytes = BytesIO()
+        combined_image.save(image_bytes, format='JPEG')
+        image_bytes.seek(0)
+
+        await app.send_photo(message.chat.id, photo=image_bytes,
+                             caption=f"Product: {product_name}\n\nCurrent Price: <b>{Price}</b>\n\nBEST BUY LINK: <b>{affiliate_url}</b>\n\nfrom <b>@Price_History_Loots </b>",
+                             reply_markup=Promo2)
+
+    else:
+        await app.send_chat_action(message.chat.id , ChatAction.TYPING)
+        await app.send_message(
+            message.chat.id,
+            f"Hey! I am {bot_username}. Just send me a valid Amazon product link. I will share the Price History Graph of the last 3 months😍😍\n\nBuy when the Price is Low📉"
+        )    # Check if the message is in a group
+    
     # Check if the message is in a group
 
     # if message.chat.type== enums.ChatType.PRIVATE:
@@ -48,6 +78,9 @@ async def start(app, message):
 Promo = InlineKeyboardMarkup(
      [[InlineKeyboardButton("PriceHistory Bot 🤖", url="https://t.me/Amazon_Pricehistory_Bot")],
       [InlineKeyboardButton("MAXIMUM DEALS 🛒", url="https://t.me/addlist/FReIeSd3Hyg5NjJl")],
+      [InlineKeyboardButton("🔔 Main Channel ", url="https://t.me/+HeHY-qoy3vsxYWU1"),InlineKeyboardButton("Whatsapp Loots 💬", url="https://chat.whatsapp.com/JAU8ose1NUD7YjRubJi59b")]])
+Promo2 = InlineKeyboardMarkup(
+     [[InlineKeyboardButton("MAXIMUM DEALS 🛒", url="https://t.me/addlist/FReIeSd3Hyg5NjJl")],
       [InlineKeyboardButton("🔔 Main Channel ", url="https://t.me/+HeHY-qoy3vsxYWU1"),InlineKeyboardButton("Whatsapp Loots 💬", url="https://chat.whatsapp.com/JAU8ose1NUD7YjRubJi59b")]])
 
 forward_off = InlineKeyboardMarkup(
@@ -85,6 +118,8 @@ async def callback_query(app,CallbackQuery):
 
 @app.on_message((filters.private & filters.incoming) | (filters.group & filters.incoming))
 async def handle_text(app, message):
+    bot_info = await app.get_me()
+    bot_username = bot_info.username
 
     # [InlineKeyboardButton("Join Channel", url="https://t.me/Deals_and_Discounts_Channel/37444")]
     # [InlineKeyboardButton("Get Deals on Whatsapp", url="https://chat.whatsapp.com/LdBZV9wT8aM0se8JUhjlJf")],
@@ -153,7 +188,7 @@ async def handle_text(app, message):
                 await message.delete()
                 e = await app.send_message(message.chat.id, "Searching Query in amazon.in...")
 
-                search_result = amazon.search_items(keywords=inputvalue, item_count=6)
+                search_result = amazon.search_items(keywords=inputvalue, item_count=8)
 
                 for item in search_result.items:
                     response = requests.get(item.images.primary.large.url)
@@ -167,8 +202,8 @@ async def handle_text(app, message):
                     await app.send_photo(chat_id=message.chat.id, photo=image_bytes,
                                          caption=f"{item.item_info.title.display_value}\n\n Currrent Price : {item.offers.listings[0].price.amount}",
                                          reply_markup=InlineKeyboardMarkup(
-                                             [[InlineKeyboardButton("Buy Now", url=f'{item.detail_page_url}')]
-
+                                             [[InlineKeyboardButton("BUY NOW", url=f'{item.detail_page_url}')],
+                                              [InlineKeyboardButton("CLICK to See Price History 📉", url=f'https://t.me/{bot_username}?start={item.asin}')]
                                               ]))
                     await e.delete()
 
@@ -220,8 +255,8 @@ async def handle_text(app, message):
             image_bytes = BytesIO()
             combined_image.save(image_bytes, format='JPEG')
             image_bytes.seek(0)
-
-            await app.send_photo(message.chat.id, photo=image_bytes, caption=f"Product: {product_name}\n\nCurrent Price: <b>{Price}</b>\n\nAMAZON LINK: <b>{affiliate_url}\n\nHumble Request to Support this Bot by Buying the Product from above Link!It will help the Bot to be Online 24*7😊</b>\n\nfrom @Price_History_Loots ",reply_markup=Promo)
+            await app.send_chat_action(message.chat.id, ChatAction.UPLOAD_PHOTO)
+            await app.send_photo(message.chat.id, photo=image_bytes, caption=f"Product: {product_name}\n\nCurrent Price: <b>{Price}</b>\n\nBEST BUY LINK : <b>{affiliate_url}\n\nSupport this Bot by Buying your Product from Above Link!It Helps the Bot to be Online 24*7 😀\n\nfrom @Price_History_Loots </b>",reply_markup=Promo2)
             # print(message.chat.id)
             if str(message.chat.id) in  DealerID:
                 # print(forward)
