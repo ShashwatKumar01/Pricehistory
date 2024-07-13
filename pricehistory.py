@@ -66,7 +66,7 @@ async def start(app, message):
         await app.send_chat_action(message.chat.id , ChatAction.TYPING)
         await app.send_message(
             message.chat.id,
-            f"Hey! I am {bot_username}. Just send me a valid Amazon product link. I will share the Price History Graph of the last 3 months😍😍\n\nBuy when the Price is Low📉"
+            f"<b>Hey! I am {bot_username}. Just send me a valid Amazon product link. I will share the Price History Graph of the last 3 months😍😍\n\nBuy when the Price is Low📉</b>"
         )    # Check if the message is in a group
     
     # Check if the message is in a group
@@ -256,7 +256,7 @@ async def handle_text(app, message):
             combined_image.save(image_bytes, format='JPEG')
             image_bytes.seek(0)
             await app.send_chat_action(message.chat.id, ChatAction.UPLOAD_PHOTO)
-            await app.send_photo(message.chat.id, photo=image_bytes, caption=f"Product: {product_name}\n\nCurrent Price: <b>{Price}</b>\n\nBEST BUY LINK : <b>{affiliate_url}\n\nSupport this Bot by Buying your Product from Above Link!It Helps the Bot to be Online 24*7 😀\n\nfrom @Price_History_Loots </b>",reply_markup=Promo2)
+            await app.send_photo(message.chat.id, photo=image_bytes, caption=f"Product: {product_name}\n\nCurrent Price: <b>{Price}</b>\n\n<b>BEST BUY LINK WITH COUPON & OFFFER 👇👇: \n\n🔗{affiliate_url}\n\nfrom @Price_History_Loots </b>",reply_markup=Promo2)
             # print(message.chat.id)
             if str(message.chat.id) in  DealerID:
                 # print(forward)
