@@ -159,7 +159,7 @@ async def callback_query(app,CallbackQuery):
 async def start(app, message):
     await app.send_message(
             message.chat.id,
-            f"{miniapps}"
+            f"<b>{miniapps}</b>"
         )
 
 
