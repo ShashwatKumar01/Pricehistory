@@ -74,6 +74,45 @@ async def start(app, message):
     # if message.chat.type== enums.ChatType.PRIVATE:
     #     await message.reply(
     #         "Hey! Just send me a valid Amazon product link. I will share you the Price History Graph of last 3 months😍😍\n\nBuy when the Price is Low📉")
+miniapps=''' 
+🚨🚨 Use Telegram Mini Apps and Free your Device Storage
+
+Amazon 🛒 :   @amazon_india_mini_bot
+
+Flipkart 🛍️:    @FLIPKART_Mini_bot
+
+Ajio 👗:           @AJIO_Mini_bot
+
+Myntra 👕 :    @MYNTRA_Mini_bot
+
+Shopsy 🏠:    @SHOPSY_Mini_bot
+
+Cleartrip ✈️ :  @CLEARTRIP_Mini_bot
+
+Goibibo ✈️:   @GOIBIBO_Mini_bot
+
+
+⚠️⚠️Join Individual Channel according to your Favourite Buying Website.😍😍
+
+👉 PRICE HISTORY : @price_history_loots
+
+👉 FREE CREDIT CARDS : @Credit_Cards_Deals
+
+👉 AMAZON : @amazon_loots_daily
+
+👉 FLIPKART : @flipkart_loots_daily
+
+👉 AJIO & MYNTRA : @Ajio_myntra_deals
+
+👉 SHOPSY & MEESHO : @shopsy_meesho_Deals
+
+👉 BEAUTY : @Grooming_and_Beauty_Deals
+
+
+Join All Add Folder 👇: 
+
+https://t.me/addlist/FReIeSd3Hyg5NjJl
+'''
 
 Promo = InlineKeyboardMarkup(
      [[InlineKeyboardButton("PriceHistory Bot 🤖", url="https://t.me/Amazon_Pricehistory_Bot")],
@@ -115,6 +154,16 @@ async def callback_query(app,CallbackQuery):
                              # photo=image_bytes,caption=f"<b>{inputvalue.replace(extracted_link, affiliate_url)}</b>",
                              # reply_markup=Promo)
         await CallbackQuery.answer(text='Sent to Channel✨', show_alert=True)
+
+@app.on_message(filters.command("miniapps") & (filters.private) & filters.incoming)
+async def start(app, message):
+    await app.send_message(
+            message.chat.id,
+            f"{miniapps}"
+        )
+
+
+
 
 @app.on_message((filters.private & filters.incoming) | (filters.group & filters.incoming))
 async def handle_text(app, message):
