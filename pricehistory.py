@@ -66,9 +66,7 @@ async def start(app, message):
         await app.send_chat_action(message.chat.id , ChatAction.TYPING)
         await app.send_message(
             message.chat.id,
-            f"<b>Hey! I am {bot_username}. Just send me a valid Amazon product link. I will share the Price History Graph of the last 3 months😍😍\n\nBuy when the Price is Low📉\n\n
-            
-            <a href='https://t.me/deals_and_discounts_channel/45190'>👉 CLICK HERE TO SEE TUTORIAL 👈</a></b>"
+            f"<b>Hey! I am {bot_username}. Just send me a valid Amazon product link. I will share the Price History Graph of the last 3 months😍😍\n\nBuy when the Price is Low📉\n\n<a href='https://t.me/deals_and_discounts_channel/45190'>👉 CLICK HERE TO SEE TUTORIAL 👈</a></b>"
         )    # Check if the message is in a group
     
     # Check if the message is in a group
