@@ -305,7 +305,7 @@ async def handle_text(app, message):
             combined_image.save(image_bytes, format='JPEG')
             image_bytes.seek(0)
             await app.send_chat_action(message.chat.id, ChatAction.UPLOAD_PHOTO)
-            await app.send_photo(message.chat.id, photo=image_bytes, caption=f"Product: {product_name}\n\nCurrent Price: <b>{Price}</b>\n\n<b>BEST BUY LINK WITH COUPON & OFFFER 👇👇: \n\n🔗{affiliate_url}\n\nfrom @Price_History_Loots </b>",reply_markup=Promo2)
+            await app.send_photo(message.chat.id, photo=image_bytes, caption=f"Product: {product_name}\n\nCurrent Price: <b>{Price}</b>\n\n<b>You may get a CASHBACK!! Check Your Coupon Page Here👇👇 : \n\n🔗 https://amzn.to/3WMJyqy \n\nYour Product Link 👇👇:\n\n🔗{affiliate_url}\n\nfrom @Price_History_Loots </b>",reply_markup=Promo2)
             # print(message.chat.id)
             if str(message.chat.id) in  DealerID:
                 # print(forward)
