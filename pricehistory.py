@@ -116,8 +116,8 @@ https://t.me/addlist/FReIeSd3Hyg5NjJl
 
 Promo = InlineKeyboardMarkup(
      [[InlineKeyboardButton("PriceHistory Bot 🤖", url="https://t.me/Amazon_Pricehistory_Bot")],
-      [InlineKeyboardButton("MAXIMUM DEALS 🛒", url="https://t.me/addlist/FReIeSd3Hyg5NjJl")],
-      [InlineKeyboardButton("🔔 Main Channel ", url="https://t.me/+HeHY-qoy3vsxYWU1"),InlineKeyboardButton("Whatsapp Loots 💬", url="https://chat.whatsapp.com/JAU8ose1NUD7YjRubJi59b")]])
+      [InlineKeyboardButton("🎁 Click Here ⤵️ ", url="https://t.me/Deals_and_Discounts_Channel2/24")]
+      ])
 Promo2 = InlineKeyboardMarkup(
      [[InlineKeyboardButton("MAXIMUM DEALS 🛒", url="https://t.me/addlist/FReIeSd3Hyg5NjJl")],
       [InlineKeyboardButton("🔔 Main Channel ", url="https://t.me/+HeHY-qoy3vsxYWU1"),InlineKeyboardButton("Whatsapp Loots 💬", url="https://chat.whatsapp.com/JAU8ose1NUD7YjRubJi59b")]])
