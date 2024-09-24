@@ -146,11 +146,11 @@ async def callback_query(app,CallbackQuery):
         forward = True
     elif CallbackQuery.data=='Send':
         a=CallbackQuery.message
-        with tempfile.NamedTemporaryFile(delete=False) as temp_file:
-            await a.download(file_name=temp_file.name)
-            with open(temp_file.name, 'rb') as f:
-                photo_bytes = BytesIO(f.read())
-        await app.send_photo(chat_id=Target_Channel_id,caption=a.caption,photo=photo_bytes,reply_markup=Promo)
+        # with tempfile.NamedTemporaryFile(delete=False) as temp_file:
+        #     await a.download(file_name=temp_file.name)
+        #     with open(temp_file.name, 'rb') as f:
+        #         photo_bytes = BytesIO(f.read())
+        await app.send_photo(chat_id=Target_Channel_id,caption=a.caption,photo=a.photo.file_id,reply_markup=Promo)
                              # photo=image_bytes,caption=f"<b>{inputvalue.replace(extracted_link, affiliate_url)}</b>",
                              # reply_markup=Promo)
         await CallbackQuery.answer(text='Sent to Channel✨', show_alert=True)
