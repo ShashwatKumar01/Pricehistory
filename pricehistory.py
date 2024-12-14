@@ -106,7 +106,7 @@ Goibibo ✈️:   @GOIBIBO_Mini_bot
 
 👉 SHOPSY & MEESHO : @shopsy_meesho_Deals
 
-👉 BEAUTY : @Grooming_and_Beauty_Deals
+👉 Offers : @OffersXpert
 
 
 Join All Add Folder 👇: 
@@ -116,11 +116,11 @@ https://t.me/addlist/FReIeSd3Hyg5NjJl
 
 Promo = InlineKeyboardMarkup(
      [[InlineKeyboardButton("PriceHistory Bot 🤖", url="https://t.me/Amazon_Pricehistory_Bot")],
-      [InlineKeyboardButton("🎁 Main Channel", url="https://t.me/+HeHY-qoy3vsxYWU1"),InlineKeyboardButton("🔔 Whatsapp 💬", url="https://whatsapp.com/channel/0029Va9OziWGE56p30A1de0Q")]
+      [InlineKeyboardButton("🎁 Main Channel", url="https://t.me/+HeHY-qoy3vsxYWU1"),InlineKeyboardButton("🔔 Whatsapp 💬", url="https://t.me/Deals_and_Discounts_Channel2/33")]
       ])
 Promo2 = InlineKeyboardMarkup(
      [[InlineKeyboardButton("MAXIMUM DEALS 🛒", url="https://t.me/addlist/FReIeSd3Hyg5NjJl")],
-      [InlineKeyboardButton("🔔 Main Channel ", url="https://t.me/+HeHY-qoy3vsxYWU1"),InlineKeyboardButton("Whatsapp Loots 💬", url="https://whatsapp.com/channel/0029Va9OziWGE56p30A1de0Q")]])
+      [InlineKeyboardButton("🔔 Main Channel ", url="https://t.me/+HeHY-qoy3vsxYWU1"),InlineKeyboardButton("Whatsapp Loots 💬", url="https://t.me/Deals_and_Discounts_Channel2/33)]])
 
 forward_off = InlineKeyboardMarkup(
     [[InlineKeyboardButton("Turn Off", callback_data='forward off')]])
