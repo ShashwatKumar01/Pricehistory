@@ -119,7 +119,7 @@ Promo = InlineKeyboardMarkup(
       [InlineKeyboardButton("🎁 Main Channel", url="https://t.me/+HeHY-qoy3vsxYWU1"),InlineKeyboardButton("🔔 Whatsapp 💬", url="https://t.me/Deals_and_Discounts_Channel2/33")]
       ])
 Promo2 = InlineKeyboardMarkup(
-     [[InlineKeyboardButton("MAXIMUM DEALS 🛒", url="https://t.me/addlist/FReIeSd3Hyg5NjJl")],
+     [[InlineKeyboardButton("MAXIMUM DEALS 🛒", url="https://t.me/addlist/6R2xTLIL9JFkMWI1")],
       [InlineKeyboardButton("🔔 Main Channel ", url="https://t.me/+HeHY-qoy3vsxYWU1"),InlineKeyboardButton("Whatsapp Loots 💬", url="https://t.me/Deals_and_Discounts_Channel2/33)]])
 
 forward_off = InlineKeyboardMarkup(
@@ -150,7 +150,7 @@ async def callback_query(app,CallbackQuery):
         #     await a.download(file_name=temp_file.name)
         #     with open(temp_file.name, 'rb') as f:
         #         photo_bytes = BytesIO(f.read())
-        await app.send_photo(chat_id=Target_Channel_id,caption=a.caption +  "\n\n<b><a href ='https://t.me/addlist/FReIeSd3Hyg5NjJl'>🛍️Click To Join for More Loots 👈</a></b>",photo=a.photo.file_id,reply_markup=Promo)
+        await app.send_photo(chat_id=Target_Channel_id,caption=a.caption +  "\n\n<b><a href ='https://t.me/addlist/6R2xTLIL9JFkMWI1'>🛍️Click To Join for More Loots 👈</a></b>",photo=a.photo.file_id,reply_markup=Promo)
                              # photo=image_bytes,caption=f"<b>{inputvalue.replace(extracted_link, affiliate_url)}</b>",
                              # reply_markup=Promo)
         await CallbackQuery.answer(text='Sent to Channel✨', show_alert=True)
@@ -169,10 +169,6 @@ async def start(app, message):
 async def handle_text(app, message):
     bot_info = await app.get_me()
     bot_username = bot_info.username
-
-    # [InlineKeyboardButton("Join Channel", url="https://t.me/Deals_and_Discounts_Channel/37444")]
-    # [InlineKeyboardButton("Get Deals on Whatsapp", url="https://chat.whatsapp.com/LdBZV9wT8aM0se8JUhjlJf")],
-    # [InlineKeyboardButton("Main Channel(TRUE DEALS)", url="https://t.me/c/1849813716/39050")],
 
     Join = InlineKeyboardMarkup(
          [[InlineKeyboardButton("Join Channel", url="https://t.me/+HeHY-qoy3vsxYWU1")]])
@@ -311,9 +307,8 @@ async def handle_text(app, message):
             if str(message.chat.id) in  DealerID:
                 # print(forward)
                 if forward == True:
-                # await app.send_photo(chat_id=Target_Channel_id, photo=image_bytes, caption=f"Product: {product_name}\n\nCurrent Price: <b>{Price}</b>\n\nAMAZON LINK: <b>{affiliate_url}</b>\n\nfrom @Amazon_Pricehistory_Bot",reply_markup=Promo)
                     await app.send_photo(chat_id=Target_Channel_id, photo=image_bytes,
-                                         caption=f"<b>{inputvalue.replace(extracted_link, affiliate_url)}</b>"+ "\n\n<b><a href ='https://t.me/addlist/FReIeSd3Hyg5NjJl'>🛍️Click To Join for More Loots 👈</a></b>",
+                                         caption=f"<b>{inputvalue.replace(extracted_link, affiliate_url)}</b>"+ "\n\n<b><a href ='https://t.me/addlist/6R2xTLIL9JFkMWI1'>🛍️Click To Join for More Loots 👈</a></b>",
                                          reply_markup=Promo)
                 await app.send_photo(message.chat.id, photo=image_bytes,
                                      caption=f"<b>{inputvalue.replace(extracted_link,affiliate_url)}</b>",
