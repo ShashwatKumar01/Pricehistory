@@ -120,7 +120,7 @@ Promo = InlineKeyboardMarkup(
       ])
 Promo2 = InlineKeyboardMarkup(
      [[InlineKeyboardButton("MAXIMUM DEALS 🛒", url="https://t.me/addlist/6R2xTLIL9JFkMWI1")],
-      [InlineKeyboardButton("🔔 Main Channel ", url="https://t.me/+HeHY-qoy3vsxYWU1"),InlineKeyboardButton("Whatsapp Loots 💬", url="https://t.me/Deals_and_Discounts_Channel2/33)]])
+      [InlineKeyboardButton("🔔 Main Channel ", url="https://t.me/+HeHY-qoy3vsxYWU1"),InlineKeyboardButton("Whatsapp Loots 💬", url="https://t.me/Deals_and_Discounts_Channel2/33")]])
 
 forward_off = InlineKeyboardMarkup(
     [[InlineKeyboardButton("Turn Off", callback_data='forward off')]])
