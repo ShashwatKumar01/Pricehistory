@@ -59,7 +59,7 @@ async def start(app, message):
         image_bytes.seek(0)
 
         await app.send_photo(message.chat.id, photo=image_bytes,
-                             caption=f"Product: {product_name}\n\nCurrent Price: <b>{Price}</b>\n\nBEST BUY LINK: <b>{affiliate_url}</b>\n\nfrom <b>@Price_History_Loots </b>",
+                             caption=f"Product: {product_name}\n\nCurrent Price: <b>{Price}</b>\n\nBEST BUY LINK: <b>{affiliate_url}</b>\n\nfrom <b>@PriceGraph </b>",
                              reply_markup=Promo2)
 
     else:
@@ -94,9 +94,7 @@ Goibibo ✈️:   @GOIBIBO_Mini_bot
 
 ⚠️⚠️Join Individual Channel according to your Favourite Buying Website.😍😍
 
-👉 PRICE HISTORY : @price_history_loots
-
-👉 FREE CREDIT CARDS : @Credit_Cards_Deals
+👉 PRICE HISTORY : @PriceGraph
 
 👉 AMAZON : @amazon_loots_daily
 
@@ -150,7 +148,7 @@ async def callback_query(app,CallbackQuery):
         #     await a.download(file_name=temp_file.name)
         #     with open(temp_file.name, 'rb') as f:
         #         photo_bytes = BytesIO(f.read())
-        await app.send_photo(chat_id=Target_Channel_id,caption=a.caption +  "\n\n<b><a href ='https://t.me/addlist/6R2xTLIL9JFkMWI1'>🛍️Click To Join for More Loots 👈</a></b>",photo=a.photo.file_id,reply_markup=Promo)
+        await app.send_photo(chat_id=Target_Channel_id,caption="<b>@PriceGraph Alert! 🛎\n\n</b>"+a.caption +  "\n\n<b><a href ='https://t.me/addlist/6R2xTLIL9JFkMWI1'>🛍️Click To Join for More Loots 👈</a></b>",photo=a.photo.file_id,reply_markup=Promo)
                              # photo=image_bytes,caption=f"<b>{inputvalue.replace(extracted_link, affiliate_url)}</b>",
                              # reply_markup=Promo)
         await CallbackQuery.answer(text='Sent to Channel✨', show_alert=True)
@@ -302,13 +300,13 @@ async def handle_text(app, message):
             combined_image.save(image_bytes, format='JPEG')
             image_bytes.seek(0)
             await app.send_chat_action(message.chat.id, ChatAction.UPLOAD_PHOTO)
-            await app.send_photo(message.chat.id, photo=image_bytes, caption=f"Product: {product_name}\n\nCurrent Price: <b>{Price}</b>\n\n<b>You may get a CASHBACK!! Check Your Coupon Page Here👇👇 : \n\n🔗 https://amzn.to/3WMJyqy \n\nYour Product Link 👇👇:\n\n🔗{affiliate_url}\n\nfrom @Price_History_Loots </b>",reply_markup=Promo2)
+            await app.send_photo(message.chat.id, photo=image_bytes, caption=f"Product: {product_name}\n\nCurrent Price: <b>{Price}</b>\n\n<b>You may get a CASHBACK!! Check Your Coupon Page Here👇👇 : \n\n🔗 https://amzn.to/3WMJyqy \n\nYour Product Link 👇👇:\n\n🔗{affiliate_url}\n\nfrom @PriceGraph </b>",reply_markup=Promo2)
             # print(message.chat.id)
             if str(message.chat.id) in  DealerID:
                 # print(forward)
                 if forward == True:
                     await app.send_photo(chat_id=Target_Channel_id, photo=image_bytes,
-                                         caption=f"<b>{inputvalue.replace(extracted_link, affiliate_url)}</b>"+ "\n\n<b><a href ='https://t.me/addlist/6R2xTLIL9JFkMWI1'>🛍️Click To Join for More Loots 👈</a></b>",
+                                         caption=f"<b>{inputvalue.replace(extracted_link, affiliate_url)}</b>"+ "\n\n<b><a href ='https://t.me/addlist/6R2xTLIL9JFkMWI1'>🛍️Click To Join for More Loots 👈</a>\n\n<i>Source ↪️: @PriceGraph</i></b>",
                                          reply_markup=Promo)
                 await app.send_photo(message.chat.id, photo=image_bytes,
                                      caption=f"<b>{inputvalue.replace(extracted_link,affiliate_url)}</b>",
